@@ -1,19 +1,12 @@
-ms-photo-enhance/script.js
-async function process(){
-  let file = document.getElementById("photo").files[0];
-  let mode = document.getElementById("mode").value;
-  let prompt = document.getElementById("prompt").value;
+document.getElementById("upload").addEventListener("change", function (event) {
 
-  if(!file){alert("Select a photo first!"); return;}
+    let file = event.target.files[0];
+    let preview = document.getElementById("preview");
 
-  let form = new FormData();
-  form.append("image", file);
-  form.append("mode", mode);
-  form.append("prompt", prompt);
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = "block";
+});
 
-  document.getElementById("result").innerHTML="<h3>Processing...</h3>";
-
-  // अभी demo image दिखा रहे हैं
-  document.getElementById("result").innerHTML =
-    `<img src="https://via.placeholder.com/400x400.png?text=Your+AI+Result" style="width:100%;border-radius:12px;margin-top:10px;">`;
+function enhancePhoto() {
+    alert("Enhance Feature Coming Soon!");
 }
