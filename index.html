@@ -2,51 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MS Photo Enhance</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-        }
-
-        #preview {
-            width: 100%;
-            display: none;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #aaa;
-        }
-
-        button {
-            padding: 12px 20px;
-            border: none;
-            background: #007bff;
-            color: #fff;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 18px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Enhancer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h2>MS Photo Enhance</h2>
-    <p>Upload a photo to enhance</p>
+    <h2>Photo Enhancer Tool</h2>
 
-    <div class="container">
-        <input type="file" id="upload" accept="image/*">
-        <img id="preview">
-        <button onclick="enhancePhoto()">Enhance Photo</button>
-    </div>
+    <input type="file" id="upload" accept="image/*">
+    <br><br>
 
-    <script src="script.js"></script>
+    <canvas id="canvas"></canvas>
+    <br><br>
 
+    <button id="enhanceBtn">Enhance Photo</button>
+
+    <script src="app.js"></script>
 </body>
 </html>
