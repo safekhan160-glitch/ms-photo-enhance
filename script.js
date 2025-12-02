@@ -1,23 +1,20 @@
-async function enhancePhoto() {
-    let file = document.getElementById("upload").files[0];
-    if (!file) {
-        alert("Please upload a photo first!");
-        return;
-    }
+let upload = document.getElementById("upload");
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+let img = new Image();
 
-    let formData = new FormData();
-    formData.append("file", file);
+upload.addEventListener("change", () => {
+    let file = upload.files[0];
+    img.src = URL.createObjectURL(file);
 
-    let upload = await fetch("https://api.imgbb.com/1/upload?key=demo", {
-        method: "POST",
-        body: formData
-    });
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+    };
+});
 
-    let uploaded = await upload.json();
-    let url = uploaded.data.url;
-
-    let res = await fetch(`/api/enhance?image=${url}`);
-    let data = await res.json();
-
-    document.getElementById("preview").src = data.enhanced_image_url;
-}
+document.getElementById("enhanceBtn").addEventListener("click", () => {
+    ctx.filter = "brightness(1.2) contrast(1.3) saturate(1.3) sharpen(1.2)";
+    ctx.drawImage(img, 0, 0);
+});
